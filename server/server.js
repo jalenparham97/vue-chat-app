@@ -28,11 +28,9 @@ const public = path.join(__dirname, '/public')
 // app.use(passport.session())
 // app.use('/auth', authRoutes)
 // app.use('/profile', profileRoutes)
-// if (process.env.NODE_ENV === 'production') {
   app.use(express.static(public))
 
   app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
-// }
 
 // app.get('/', (req, res) => {
 //   res.render('home', { user: req.user })
