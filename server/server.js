@@ -36,7 +36,7 @@ const public = path.join(__dirname, '/public')
 //   res.render('home', { user: req.user })
 // })
 
-const port = 5000
+const port = process.env.PORT || 5000
 
 server.listen(port, () => console.log('Listening on port', port))
 
