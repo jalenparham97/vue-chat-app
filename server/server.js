@@ -2,39 +2,16 @@ const express = require('express')
 const http = require('http')
 const path = require('path')
 const socket = require('socket.io')
-// const cookieSession = require('cookie-session')
-// const passport = require('passport')
 
 const { generateMessage, generateAdminMessage, generateLocationMessage } = require('./services/MessageService')
 const { Users } = require('./services/UserService')
-// const { mongoose } = require('./db/connection')
-// const passportConfig = require('./config/passport-config')
-// const credentials = require('./config/config.json')
-// const authRoutes = require('./routes/auth-routes')
-// const profileRoutes = require('./routes/profile-routes')
-
 
 const app = express()
 const server = http.createServer(app)
 const public = path.join(__dirname, '/public')
+app.use(express.static(public))
 
-// app.set('view engine', 'ejs')
-
-// app.use(cookieSession({
-//   maxAge: 24 * 60 * 60 * 1000,
-//   keys: [credentials.session.cookieKey]
-// }))
-// app.use(passport.initialize())
-// app.use(passport.session())
-// app.use('/auth', authRoutes)
-// app.use('/profile', profileRoutes)
-  app.use(express.static(public))
-
-  app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
-
-// app.get('/', (req, res) => {
-//   res.render('home', { user: req.user })
-// })
+app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
 
 const port = process.env.PORT || 5000
 
